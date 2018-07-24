@@ -1,15 +1,19 @@
-{ 
-  "adminSiteName": null,
-  "appServicePlanName": "myAppServicePlan",
-  "geoRegion": "West Europe",
-  "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myAppServicePlan",
-  "kind": "app",
-  "location": "West Europe",
-  "maximumNumberOfWorkers": 1,
-  "name": "myAppServicePlan",
-  < JSON data removed for brevity. >
-  "targetWorkerSizeId": 0,
-  "type": "Microsoft.Web/serverfarms",
-  "workerTierName": null
+<?php
+// define variables and set to empty values
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+  $website = test_input($_POST["website"]);
+  $comment = test_input($_POST["comment"]);
+  $gender = test_input($_POST["gender"]);
 }
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
